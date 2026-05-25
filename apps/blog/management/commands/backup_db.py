@@ -39,7 +39,6 @@ class Command(BaseCommand):
         shutil.copy2(db_path, dest)
         self.stdout.write(self.style.SUCCESS(f'Backup saved: {dest}'))
 
-        # Rotate — keep only the last N backups
         keep = options['keep']
         backups = sorted(backup_dir.glob('db_*.sqlite3'))
         for old in backups[:-keep]:

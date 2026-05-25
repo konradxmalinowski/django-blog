@@ -2,7 +2,6 @@ from .base import *
 
 DEBUG = False
 
-# ── Middleware — WhiteNoise must be right after SecurityMiddleware ─────────────
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -17,7 +16,6 @@ MIDDLEWARE = [
     'apps.accounts.middleware.TwoFactorMiddleware',
 ]
 
-# ── PostgreSQL via DATABASE_URL (Render injects this automatically) ───────────
 DATABASE_URL = config('DATABASE_URL', default='')
 if DATABASE_URL:
     import dj_database_url
@@ -25,7 +23,6 @@ if DATABASE_URL:
         'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }
 
-# ── Static files — WhiteNoise serves and compresses with far-future headers ───
 STORAGES = {
     'default': {
         'BACKEND': 'django.core.files.storage.FileSystemStorage',
@@ -35,28 +32,23 @@ STORAGES = {
     },
 }
 
-# ── HTTPS / secure cookies ────────────────────────────────────────────────────
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# ── HSTS ─────────────────────────────────────────────────────────────────────
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 
-# ── Site URL (used in SEO canonical, OG tags) ─────────────────────────────────
 SITE_URL = config('SITE_URL', default='https://devlog.onrender.com')
 
-# ── Email — tryb demo (SMTP zablokowany na Render free tier) ─────────────────
 DEMO_MODE = True
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
-# ── Logging — stdout only (Render captures stdout in its log viewer) ──────────
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

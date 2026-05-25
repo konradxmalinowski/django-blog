@@ -13,7 +13,6 @@ from apps.blog.models import Post
 
 register = template.Library()
 
-# Allowed HTML tags after Markdown rendering (bleach sanitize)
 ALLOWED_TAGS = [
     'p', 'br', 'strong', 'em', 'b', 'i', 'u', 's', 'del',
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
@@ -45,7 +44,6 @@ def markdownify(value):
     if not value:
         return ''
     html = _markdownify(value)
-    # Sanitize with bleach to prevent XSS
     clean_html = bleach.clean(
         html,
         tags=ALLOWED_TAGS,
@@ -81,7 +79,6 @@ def render_toc(body):
     return mark_safe(html)
 
 
-# ─── INCLUSION TAGS ──────────────────────────────────────────────────────────
 
 @register.inclusion_tag('partials/widget_recent_posts.html')
 def show_recent_posts(count=5):
@@ -114,7 +111,6 @@ def show_tag_cloud():
     return {'tags': tags}
 
 
-# ─── FILTERS ─────────────────────────────────────────────────────────────────
 
 @register.filter(name='reading_bar')
 def reading_bar(minutes):

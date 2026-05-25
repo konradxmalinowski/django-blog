@@ -127,7 +127,6 @@ SUPERUSER_USERNAME = config('SUPERUSER_USERNAME', default='')
 SUPERUSER_EMAIL = config('SUPERUSER_EMAIL', default='')
 SUPERUSER_PASSWORD = config('SUPERUSER_PASSWORD', default='')
 
-# === SEO & Site Settings ===
 SITE_NAME = 'DevLog'
 SITE_URL = 'https://devlog.example.com'
 SITE_DESCRIPTION = 'Blog o cyklu tworzenia aplikacji webowej w Django'
@@ -135,13 +134,11 @@ TWITTER_HANDLE = ''
 SITE_DEFAULT_OG_IMAGE = config('SITE_DEFAULT_OG_IMAGE', default='')
 SITE_DEFAULT_IMAGE = SITE_DEFAULT_OG_IMAGE
 
-# === Security Headers ===
 SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True  # legacy but harmless
+SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
-# CSP via middleware (nie przez django-csp, tylko własny middleware)
 CONTENT_SECURITY_POLICY = (
     "default-src 'self'; "
     "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; "
@@ -155,28 +152,24 @@ PERMISSIONS_POLICY = (
     "camera=(), microphone=(), geolocation=(), payment=()"
 )
 
-# Pagination for SEO
 BLOG_POSTS_PER_PAGE = 10
 
-# Session security
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 14   # 14 days
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 14
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
 
-# django-axes: brute-force protection
 AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesStandaloneBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 AXES_FAILURE_LIMIT = 5
-AXES_COOLOFF_TIME = 1          # 1 hour
+AXES_COOLOFF_TIME = 1
 AXES_RESET_ON_SUCCESS = True
 AXES_LOCKOUT_TEMPLATE = 'accounts/locked_out.html'
 AXES_ENABLE_ADMIN = True
 
-# === Logging ===
 LOGS_DIR = BASE_DIR / 'logs'
 LOGS_DIR.mkdir(exist_ok=True)
 
@@ -193,7 +186,7 @@ LOGGING = {
         'django_file': {
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': str(LOGS_DIR / 'django.log'),
-            'maxBytes': 5 * 1024 * 1024,  # 5 MB
+            'maxBytes': 5 * 1024 * 1024,
             'backupCount': 5,
             'formatter': 'verbose',
             'encoding': 'utf-8',

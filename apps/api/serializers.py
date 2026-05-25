@@ -18,7 +18,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     user = UserMiniSerializer(read_only=True)
-    # name/email are set server-side in perform_create from the authenticated user
     name  = serializers.CharField(max_length=80, required=False, default='')
     email = serializers.EmailField(required=False, default='')
 

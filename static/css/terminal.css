@@ -59,7 +59,6 @@
   --bg-code:           #eaf0f6;
 }
 
-/* light mode overrides for hardcoded rgba tints */
 .light-mode .nav-link-cta:hover {
   background: rgba(26, 127, 55, 0.08);
 }
@@ -884,13 +883,11 @@ ul, ol {
 .link-blue { color: var(--accent-blue); }
 .link-blue:hover { color: var(--accent-green); }
 
-/* ── Mobile (≤ 767px) ────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   :root {
     --font-size: 14px;
   }
 
-  /* Navbar — hamburger */
   .navbar { height: auto; min-height: var(--navbar-height); }
   .navbar-inner {
     flex-wrap: wrap;
@@ -925,20 +922,16 @@ ul, ol {
     font-size: 0.92em;
   }
 
-  /* Layout */
   .main-content { padding: 0.75rem; }
   .content-wrapper { grid-template-columns: 1fr; gap: 1.25rem; }
   .sidebar-column { position: static; }
 
-  /* Cards */
   .post-card { padding: 1rem; }
   .terminal-box-body { padding: 1rem; }
 
-  /* Post detail */
   .post-detail-title { font-size: 1.2em; }
   .similar-posts-grid { grid-template-columns: 1fr; }
 
-  /* Footer */
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
@@ -946,12 +939,10 @@ ul, ol {
   }
   .footer-quote { display: none; }
 
-  /* Pagination */
   .pagination-inner { gap: 0.75rem; flex-wrap: wrap; }
   .pagination-pages { flex-wrap: wrap; justify-content: center; }
 }
 
-/* ── Tablet (768px – 1023px) ─────────────────────────────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
   :root { --sidebar-width: 210px; }
   .content-wrapper { gap: 1.25rem; }
@@ -1265,14 +1256,12 @@ textarea::placeholder {
   .form-actions { flex-direction: column; align-items: flex-start; }
   .share-success-actions { flex-direction: column; }
 
-  /* Settings rows stack on mobile */
   .settings-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
 
-  /* Profile: twofa secret full width */
   .twofa-secret-wrap { flex-direction: column; }
   .twofa-secret { word-break: break-all; width: 100%; }
 }
@@ -1568,7 +1557,6 @@ input[type="password"]:focus {
   .profile-avatar-wrap { align-self: center; }
   .profile-container { padding: 0; }
 
-  /* Reactions/bookmarks wrap on very small screens */
   .post-reactions { flex-wrap: wrap; gap: 0.5rem; }
 }
 
@@ -1880,7 +1868,6 @@ select:focus-visible {
 .toc-link:hover { color: var(--accent-green); }
 .toc-link.toc-active { color: var(--accent-green); font-weight: 600; }
 
-/* ── Accessibility ─────────────────────────────────────────────────────────── */
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;
@@ -1891,7 +1878,6 @@ select:focus-visible {
   border: 0;
 }
 
-/* ── Author Panel / Moje posty ─────────────────────────────────────────────── */
 .author-panel-toolbar {
   display: flex;
   align-items: center;
@@ -1962,7 +1948,6 @@ select:focus-visible {
   border: 1px solid var(--bg-border);
 }
 
-/* ── Sidebar newsletter highlight ──────────────────────────────────────────── */
 .sidebar-newsletter {
   border-color: var(--accent-green);
 }

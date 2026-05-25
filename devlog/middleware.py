@@ -18,5 +18,4 @@ class SecurityHeadersMiddleware:
         response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
         response['X-Content-Type-Options'] = 'nosniff'
         response['X-Frame-Options'] = 'DENY'
-        # Nie ustawiamy HSTS lokalnie (tylko HTTPS w produkcji)
         return response
