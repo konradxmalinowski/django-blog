@@ -64,7 +64,6 @@ class Post(models.Model):
     reading_time = models.PositiveIntegerField(default=0)
     views_count = models.PositiveIntegerField(default=0)
 
-    # SEO fields
     meta_description = models.CharField(
         max_length=160, blank=True,
         help_text='Meta description (max 160 chars). Puste = auto z excerpt.'
@@ -92,7 +91,6 @@ class Post(models.Model):
         ]
 
     def save(self, *args, **kwargs):
-        # Auto-calculate reading time: ~200 words per minute, min 1 minute
         if self.body:
             word_count = len(self.body.split())
             self.reading_time = max(1, word_count // 200)
@@ -110,7 +108,6 @@ class Post(models.Model):
         )
 
     def get_meta_description(self):
-        """Zwraca meta description: custom → excerpt → body[:160]."""
         if self.meta_description:
             return self.meta_description
         if self.excerpt:
@@ -119,7 +116,6 @@ class Post(models.Model):
         return plain[:160].strip()
 
     def get_canonical_url(self, request=None):
-        """Zwraca kanoniczny URL (custom lub auto)."""
         if self.canonical_url:
             return self.canonical_url
         url = self.get_absolute_url()

@@ -27,7 +27,6 @@ urlpatterns = [
     path('newsletter/subscribe/', views.newsletter_subscribe, name='newsletter_subscribe'),
     path('newsletter/confirm/<uuid:token>/', views.newsletter_confirm, name='newsletter_confirm'),
     path('newsletter/unsubscribe/<uuid:token>/', views.newsletter_unsubscribe, name='newsletter_unsubscribe'),
-    # RSS Feeds
     path('feed/', LatestPostsFeed(), name='post_feed'),
     path('feed/category/<slug:cat_slug>/', CategoryFeed(), name='category_feed'),
 ]

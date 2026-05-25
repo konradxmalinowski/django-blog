@@ -13,7 +13,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(MarkdownxModelAdmin):
-    list_display = ('title', 'category', 'author', 'publish', 'status', 'reading_time')
+    list_display = ('title', 'slug', 'category', 'author', 'publish', 'status', 'reading_time')
     list_filter = ('status', 'category', 'created', 'publish', 'author')
     search_fields = ('title', 'body', 'excerpt')
     prepopulated_fields = {'slug': ('title',)}

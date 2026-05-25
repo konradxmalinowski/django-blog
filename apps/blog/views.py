@@ -38,11 +38,9 @@ class PostListView(ListView):
 
 
 def post_list_by_tag(request, tag_slug):
-    """FBV — lists published posts filtered by a taggit tag slug."""
     tag = get_object_or_404(Tag, slug=tag_slug)
     posts = Post.published.filter(tags__in=[tag])
 
-    # Manual pagination
     paginator = Paginator(posts, django_settings.BLOG_POSTS_PER_PAGE)
     page_number = request.GET.get('page', 1)
     try:
@@ -61,7 +59,6 @@ def post_list_by_tag(request, tag_slug):
 
 
 def _render_post_list(request, page_obj, tag=None, category=None, author=None, section='blog'):
-    """Shared render helper for tag/category/author filtered list views."""
     return render(request, 'blog/post_list.html', {
         'posts': page_obj,
         'page_obj': page_obj,
@@ -107,7 +104,6 @@ class AuthorPostListView(ListView):
 
 @ratelimit(key='ip', rate='5/m', method='POST', block=True)
 def post_detail(request, year, month, day, post):
-    """FBV — post detail with comments (paginated) and similar posts by shared tags."""
     post_obj = get_object_or_404(
         Post,
         status='published',
@@ -117,7 +113,6 @@ def post_detail(request, year, month, day, post):
         publish__day=day,
     )
 
-    # Paginated active comments
     all_comments = post_obj.comments.filter(active=True)
     comment_paginator = Paginator(all_comments, 10)
     comment_page = request.GET.get('comment_page', 1)
@@ -144,7 +139,6 @@ def post_detail(request, year, month, day, post):
     else:
         comment_form = CommentForm()
 
-    # Similar posts: posts sharing the most tags, excluding current post
     post_tags_ids = post_obj.tags.values_list('id', flat=True)
     similar_posts = (
         Post.published
@@ -154,7 +148,6 @@ def post_detail(request, year, month, day, post):
         .order_by('-same_tags', '-publish')[:4]
     )
 
-    # Increment views_count once per session
     session_key = f'viewed_post_{post_obj.id}'
     if not request.session.get(session_key):
         Post.objects.filter(id=post_obj.id).update(views_count=db_models.F('views_count') + 1)
@@ -199,7 +192,6 @@ def _notify_author_new_comment(post, comment):
 
 
 def post_share(request, post_id):
-    """FBV — email-share a published post. Sends via EMAIL_BACKEND (console in dev)."""
     post = get_object_or_404(Post, id=post_id, status='published')
     sent = False
 
@@ -235,7 +227,6 @@ def post_share(request, post_id):
 
 
 def post_search(request):
-    """FBV — basic full-text search using Q-objects (icontains on title/body/excerpt)."""
     form = SearchForm()
     results = []
     query = None
