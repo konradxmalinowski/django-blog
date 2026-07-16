@@ -117,6 +117,17 @@ Komponenty: ASCII-box karty (┌─┐│└─┘), pseudoprompt breadcrumbs (`
 Używaj zawsze `DJANGO_SETTINGS_MODULE=devlog.settings.local` na dev.
 Zmienne z `.env` przez `python-decouple`. Plik `.env.example` zawiera wszystkie klucze.
 
+## Hosting
+
+Dwa równoległe cele wdrożenia produkcyjnego:
+
+| Cel | Settings module | Requirements | Serwer aplikacji | Baza | Instrukcja |
+|---|---|---|---|---|---|
+| Render | `devlog.settings.production` | `requirements/production.txt` | gunicorn | PostgreSQL (`DATABASE_URL`) | `docs/07-render-hosting.md` |
+| CT8 (MyDevil/Small.pl, Passenger) | `devlog.settings.ct8` | `requirements/ct8.txt` | Passenger (`passenger_wsgi.py`) | SQLite | `docs/08-ct8-hosting.md` |
+
+Oba cele mają `DEMO_MODE=True` i dummy email backend — rejestracja jest natychmiastowa, bez realnej wysyłki maili.
+
 ## Conventions
 
 - Szablony TYLKO w `templates/` (nie w apps/templates/)
