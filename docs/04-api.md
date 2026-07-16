@@ -50,7 +50,7 @@ Lista opublikowanych postów.
 ]
 ```
 
-#### `POST /api/posts/` — wymaga tokenu
+#### `POST /api/posts/` - wymaga tokenu
 
 ```json
 {
@@ -66,9 +66,9 @@ Lista opublikowanych postów.
 
 Szczegóły jednego posta (pełna treść + `body_html`).
 
-#### `PUT /api/posts/<slug>/` — wymaga tokenu (author lub admin)
+#### `PUT /api/posts/<slug>/` - wymaga tokenu (author lub admin)
 
-#### `DELETE /api/posts/<slug>/` — wymaga tokenu (author lub admin)
+#### `DELETE /api/posts/<slug>/` - wymaga tokenu (author lub admin)
 
 ---
 

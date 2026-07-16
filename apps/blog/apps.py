@@ -63,13 +63,13 @@ def _ensure_sample_posts():
 
     sample_posts = [
         {
-            'title': 'Cykl tworzenia aplikacji webowej — wstęp',
+            'title': 'Cykl tworzenia aplikacji webowej - wstęp',
             'slug': 'cykl-tworzenia-aplikacji-webowej-wstep',
             'category': 'backend',
             'excerpt': 'Każdy projekt zaczyna się od decyzji. Dlaczego Django, dlaczego Python 3.14 i jak wygląda cały cykl.',
             'body': """## Dlaczego Django?
 
-Django to framework z podejściem „batteries included". Wszystko czego potrzebuje typowa aplikacja webowa jest dostępne od razu — ORM, panel admina, system szablonów, autentykacja.
+Django to framework z podejściem „batteries included". Wszystko czego potrzebuje typowa aplikacja webowa jest dostępne od razu - ORM, panel admina, system szablonów, autentykacja.
 
 ### Python 3.14
 
@@ -79,18 +79,18 @@ Python 3.14 wprowadza szereg optymalizacji wydajnościowych. Projekt działa na 
 
 Cykl tworzenia tej aplikacji podzielony jest na 7 faz:
 
-1. **Core** — modele, widoki, szablony
-2. **Email i komentarze** — udostępnianie postów, system komentarzy
-3. **Template tags** — własne tagi, sidebar widgets
-4. **Konta użytkowników** — rejestracja, logowanie, profile
-5. **RSS i sitemap** — kanały RSS, mapa strony
-6. **REST API** — Django REST Framework, tokeny
-7. **UI polish** — terminal CSS, dark/light mode, animacje
+1. **Core** - modele, widoki, szablony
+2. **Email i komentarze** - udostępnianie postów, system komentarzy
+3. **Template tags** - własne tagi, sidebar widgets
+4. **Konta użytkowników** - rejestracja, logowanie, profile
+5. **RSS i sitemap** - kanały RSS, mapa strony
+6. **REST API** - Django REST Framework, tokeny
+7. **UI polish** - terminal CSS, dark/light mode, animacje
 """,
             'tags': ['django', 'python', 'webdev'],
         },
         {
-            'title': 'Modele Django — Post, Category, Comment',
+            'title': 'Modele Django - Post, Category, Comment',
             'slug': 'modele-django-post-category-comment',
             'category': 'backend',
             'excerpt': 'Projektowanie modeli to fundament. Omawiam decyzje dotyczące struktury Post, Category i Comment.',
@@ -98,9 +98,9 @@ Cykl tworzenia tej aplikacji podzielony jest na 7 faz:
 
 Kluczowe decyzje projektowe:
 
-- `slug` z `unique_for_date='publish'` — ten sam slug może wystąpić w różnych dniach
-- `MarkdownxField` zamiast TextField — wbudowany podgląd w adminie
-- `PublishedManager` — osobny manager dla opublikowanych postów
+- `slug` z `unique_for_date='publish'` - ten sam slug może wystąpić w różnych dniach
+- `MarkdownxField` zamiast TextField - wbudowany podgląd w adminie
+- `PublishedManager` - osobny manager dla opublikowanych postów
 
 ```python
 class PublishedManager(models.Manager):
@@ -110,11 +110,11 @@ class PublishedManager(models.Manager):
 
 ## Model Category
 
-Prosta struktura: nazwa, slug, opis, kolor. Bez zagnieżdżania — blog jest płaski.
+Prosta struktura: nazwa, slug, opis, kolor. Bez zagnieżdżania - blog jest płaski.
 
 ## Model Comment
 
-Komentarze są moderowane (`active=False` domyślnie). Pole `user` jest opcjonalne — komentować mogą niezalogowani.
+Komentarze są moderowane (`active=False` domyślnie). Pole `user` jest opcjonalne - komentować mogą niezalogowani.
 
 ### XSS sanitization
 
@@ -129,7 +129,7 @@ def clean_body(self):
             'tags': ['django', 'models', 'orm'],
         },
         {
-            'title': 'Terminal CSS — budowanie dark theme od zera',
+            'title': 'Terminal CSS - budowanie dark theme od zera',
             'slug': 'terminal-css-budowanie-dark-theme',
             'category': 'frontend',
             'excerpt': 'Jak zbudować spójny terminal-style design system używając CSS custom properties bez żadnego frameworka.',
@@ -151,7 +151,7 @@ Cały motyw oparty jest na CSS custom properties. Dzięki temu przełączanie da
 
 ## ASCII box components
 
-Karty używają znaków box-drawing zamiast zwykłych borderów — czysty CSS, zero obrazków.
+Karty używają znaków box-drawing zamiast zwykłych borderów - czysty CSS, zero obrazków.
 
 ## JetBrains Mono
 
@@ -159,7 +159,7 @@ Font monospace ładowany z Google Fonts. Fallback: Fira Code, Cascadia Code, Con
 
 ### Responsive
 
-Na mobile navbar zwija się, sidebar znika — content zajmuje pełną szerokość.
+Na mobile navbar zwija się, sidebar znika - content zajmuje pełną szerokość.
 """,
             'tags': ['css', 'design', 'frontend'],
         },
@@ -167,7 +167,7 @@ Na mobile navbar zwija się, sidebar znika — content zajmuje pełną szerokoś
             'title': 'REST API z Django REST Framework',
             'slug': 'rest-api-django-rest-framework',
             'category': 'backend',
-            'excerpt': 'Budowanie REST API z TokenAuthentication, serializatorami i permissions — krok po kroku.',
+            'excerpt': 'Budowanie REST API z TokenAuthentication, serializatorami i permissions - krok po kroku.',
             'body': """## Dlaczego DRF?
 
 Django REST Framework to standard dla REST API w Django. Serializatory, widoki generyczne i system uprawnień działają spójnie.
@@ -194,12 +194,12 @@ Token przekazywany w nagłówku: `Authorization: Token <token>`.
 
 ## Permissions
 
-Autor może edytować tylko własne posty — custom permission `IsAuthorOrReadOnly`.
+Autor może edytować tylko własne posty - custom permission `IsAuthorOrReadOnly`.
 """,
             'tags': ['api', 'drf', 'django'],
         },
         {
-            'title': 'Bezpieczeństwo — 2FA, rate limiting, django-axes',
+            'title': 'Bezpieczeństwo - 2FA, rate limiting, django-axes',
             'slug': 'bezpieczenstwo-2fa-rate-limiting-django-axes',
             'category': 'backend',
             'excerpt': 'Warstwa bezpieczeństwa: weryfikacja email, TOTP 2FA, kody zapasowe, blokada brute-force i audit log.',

@@ -1,4 +1,4 @@
-# Security Features — DevLog
+# Security Features - DevLog
 
 ## Task Description
 
@@ -19,11 +19,11 @@ Implement 5 security features for the DevLog Django blog:
 
 ## Files to Modify
 
-- `apps/accounts/models.py` — add EmailVerificationToken, TwoFactorBackupCode, AuditLog, notify_comments
-- `apps/accounts/forms.py` — add notify_comments to UserProfileForm
-- `apps/accounts/views.py` — register, setup_2fa, disable_2fa, verify_2fa; add new views
-- `apps/accounts/urls.py` — add new URL patterns before `<str:username>/`
-- `apps/accounts/utils.py` — new file with log_action, get_client_ip
+- `apps/accounts/models.py` - add EmailVerificationToken, TwoFactorBackupCode, AuditLog, notify_comments
+- `apps/accounts/forms.py` - add notify_comments to UserProfileForm
+- `apps/accounts/views.py` - register, setup_2fa, disable_2fa, verify_2fa; add new views
+- `apps/accounts/urls.py` - add new URL patterns before `<str:username>/`
+- `apps/accounts/utils.py` - new file with log_action, get_client_ip
 
 ## Files to Create
 

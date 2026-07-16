@@ -50,7 +50,7 @@ def register(request):
                 user.save()
                 login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 log_action(request, user, 'register')
-                messages.info(request, 'Tryb demo — konto aktywowane automatycznie (bez weryfikacji email).')
+                messages.info(request, 'Tryb demo - konto aktywowane automatycznie (bez weryfikacji email).')
                 return redirect('blog:post_list')
             user.is_active = False
             user.save()

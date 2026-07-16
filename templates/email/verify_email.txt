@@ -7,4 +7,4 @@ Dziękujemy za rejestrację w DevLog. Kliknij poniższy link, aby potwierdzić a
 Link jest ważny przez 24 godziny. Jeśli nie zakładałeś/aś konta w DevLog, zignoruj tę wiadomość.
 
 ---
-DevLog — Blog o cyklu tworzenia aplikacji webowej
+DevLog - Blog o cyklu tworzenia aplikacji webowej

@@ -51,7 +51,7 @@ Managery: `Post.objects` (wszystkie), `Post.published` (tylko `status='published
 | `name` | CharField(100) |
 | `slug` | SlugField(unique) |
 | `description` | TextField |
-| `color` | CharField(7) — hex kolor |
+| `color` | CharField(7) - hex kolor |
 | `meta_description` | CharField(160) |
 
 ### `blog.Comment`
@@ -59,20 +59,20 @@ Managery: `Post.objects` (wszystkie), `Post.published` (tylko `status='published
 | Pole | Typ |
 |------|-----|
 | `post` | FK(Post) |
-| `user` | FK(User, null=True) — opcjonalny |
+| `user` | FK(User, null=True) - opcjonalny |
 | `name` | CharField(80) |
 | `email` | EmailField |
-| `body` | TextField — bleach-sanitized |
-| `active` | BooleanField(False) — moderacja |
+| `body` | TextField - bleach-sanitized |
+| `active` | BooleanField(False) - moderacja |
 | `created` | DateTimeField(auto_now_add) |
 
 ### `blog.PostReaction`
 
-Unikalna para `(post, user)` — "lajk" posta.
+Unikalna para `(post, user)` - "lajk" posta.
 
 ### `blog.Bookmark`
 
-Unikalna para `(user, post)` — zapisany post.
+Unikalna para `(user, post)` - zapisany post.
 
 ### `blog.Subscriber`
 
@@ -80,7 +80,7 @@ Unikalna para `(user, post)` — zapisany post.
 |------|-----|
 | `email` | EmailField(unique) |
 | `confirmed` | BooleanField(False) |
-| `token` | UUIDField — link potwierdzający |
+| `token` | UUIDField - link potwierdzający |
 | `created_at` | DateTimeField |
 
 ### `accounts.UserProfile`
@@ -154,10 +154,10 @@ FK(User). Akcje: `login`, `logout`, `password_change`, `email_change`, `2fa_enab
 |----------|--------|------|
 | `/api/posts/` | GET, POST | Token (POST) |
 | `/api/posts/<slug>/` | GET, PUT, PATCH, DELETE | Token (zapis) |
-| `/api/posts/<slug>/comments/` | GET, POST | — |
-| `/api/tags/` | GET | — |
-| `/api/categories/` | GET | — |
-| `/api/auth/token/` | POST | — |
+| `/api/posts/<slug>/comments/` | GET, POST | - |
+| `/api/tags/` | GET | - |
+| `/api/categories/` | GET | - |
+| `/api/auth/token/` | POST | - |
 
 ---
 
@@ -206,5 +206,5 @@ Login z 2FA:
 6. `AuthenticationMiddleware`
 7. `MessageMiddleware`
 8. `XFrameOptionsMiddleware`
-9. `SecurityHeadersMiddleware` (własny — CSP, Permissions-Policy)
-10. `TwoFactorMiddleware` (własny — wymusza weryfikację 2FA)
+9. `SecurityHeadersMiddleware` (własny - CSP, Permissions-Policy)
+10. `TwoFactorMiddleware` (własny - wymusza weryfikację 2FA)

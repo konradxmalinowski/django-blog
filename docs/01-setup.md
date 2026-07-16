@@ -25,7 +25,7 @@ pip install -r requirements/local.txt
 
 # 4. Skonfiguruj środowisko
 cp .env.example .env
-# Edytuj .env — patrz docs/02-configuration.md
+# Edytuj .env - patrz docs/02-configuration.md
 
 # 5. Zastosuj migracje (tworzy też superusera i przykładowe posty automatycznie)
 DJANGO_SETTINGS_MODULE=devlog.settings.local python manage.py migrate
@@ -41,23 +41,23 @@ Panel admina: **http://127.0.0.1:8000/admin**
 
 ## Zmienne środowiskowe
 
-Plik `.env` — kopiuj z `.env.example`:
+Plik `.env` - kopiuj z `.env.example`:
 
 | Zmienna | Domyślnie (dev) | Opis |
 |---------|-----------------|------|
-| `SECRET_KEY` | — | Klucz Django (wymagany) |
+| `SECRET_KEY` | - | Klucz Django (wymagany) |
 | `DEBUG` | `True` | Tryb debugowania |
 | `ALLOWED_HOSTS` | `localhost,127.0.0.1` | Dozwolone hosty |
 | `SUPERUSER_USERNAME` | `admin` | Login superusera (tworzony automatycznie) |
-| `SUPERUSER_EMAIL` | — | Email superusera |
-| `SUPERUSER_PASSWORD` | — | Hasło superusera |
+| `SUPERUSER_EMAIL` | - | Email superusera |
+| `SUPERUSER_PASSWORD` | - | Hasło superusera |
 | `EMAIL_BACKEND` | smtp | Backend poczty |
 | `EMAIL_HOST` | `smtp.gmail.com` | Serwer SMTP |
 | `EMAIL_PORT` | `587` | Port SMTP |
-| `EMAIL_HOST_USER` | — | Login SMTP |
-| `EMAIL_HOST_PASSWORD` | — | App Password (Gmail) |
-| `DEFAULT_FROM_EMAIL` | — | Adres nadawcy |
-| `SITE_DEFAULT_OG_IMAGE` | — | Domyślny obraz OG (URL) |
+| `EMAIL_HOST_USER` | - | Login SMTP |
+| `EMAIL_HOST_PASSWORD` | - | App Password (Gmail) |
+| `DEFAULT_FROM_EMAIL` | - | Adres nadawcy |
+| `SITE_DEFAULT_OG_IMAGE` | - | Domyślny obraz OG (URL) |
 
 ### Gmail App Password
 
@@ -134,5 +134,5 @@ Backupy zapisywane w `backups/db/db_YYYYMMDD_HHMMSS.sqlite3`.
 ## Logi
 
 Logi zapisywane w `logs/`:
-- `logs/django.log` — błędy aplikacji (WARNING+), rotacja 5 MB × 5 plików
-- `logs/security.log` — zdarzenia security (INFO+), rotacja 5 MB × 10 plików
+- `logs/django.log` - błędy aplikacji (WARNING+), rotacja 5 MB × 5 plików
+- `logs/security.log` - zdarzenia security (INFO+), rotacja 5 MB × 10 plików
