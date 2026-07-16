@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/SQLite-dev_|_PostgreSQL_ready-003B57?logo=sqlite&logoColor=white" alt="Database">
 </p>
 <p align="center">
-  A developer blog documenting the full build cycle of a Django web application — terminal-style UI, REST API, two-factor authentication, newsletter, RSS, and comment moderation.
+  A developer blog documenting the full build cycle of a Django web application - terminal-style UI, REST API, two-factor authentication, newsletter, RSS, and comment moderation.
 </p>
 
 ---
@@ -24,22 +24,22 @@
 
 ## Overview
 
-DevLog is a full-featured Django blog built as a live record of its own development. Every layer of the stack is documented incrementally — from initial setup and data models through security hardening, REST API design, and frontend components. The UI uses a custom terminal dark theme with JetBrains Mono, no CSS framework.
+DevLog is a full-featured Django blog built as a live record of its own development. Every layer of the stack is documented incrementally - from initial setup and data models through security hardening, REST API design, and frontend components. The UI uses a custom terminal dark theme with JetBrains Mono, no CSS framework.
 
 ---
 
 ## Features
 
-- **REST API** — DRF-powered endpoints with token authorization; full curl reference in [`docs/04-api.md`](docs/04-api.md)
-- **Two-factor authentication** — TOTP-based 2FA via `pyotp`; QR code enrollment flow built into the account panel
-- **Brute-force & rate limiting** — `django-axes` lockout policy + `django-ratelimit` on sensitive views
-- **Newsletter** — subscription management and broadcast from the author panel
-- **RSS feed** — auto-generated feed for all published posts
-- **Comment system** — threaded comments with author moderation queue
-- **Author panel** — post management, comment moderation, newsletter dispatch, audit log
-- **Security** — XSS sanitization via `bleach`, CSRF enforcement, Content Security Policy headers, full audit log
-- **Dark / light mode** — system-aware theme toggle persisted in `localStorage`
-- **Markdown editor** — `django-markdownx` with live preview; tags via `django-taggit`
+- **REST API** - DRF-powered endpoints with token authorization; full curl reference in [`docs/04-api.md`](docs/04-api.md)
+- **Two-factor authentication** - TOTP-based 2FA via `pyotp`; QR code enrollment flow built into the account panel
+- **Brute-force & rate limiting** - `django-axes` lockout policy + `django-ratelimit` on sensitive views
+- **Newsletter** - subscription management and broadcast from the author panel
+- **RSS feed** - auto-generated feed for all published posts
+- **Comment system** - threaded comments with author moderation queue
+- **Author panel** - post management, comment moderation, newsletter dispatch, audit log
+- **Security** - XSS sanitization via `bleach`, CSRF enforcement, Content Security Policy headers, full audit log
+- **Dark / light mode** - system-aware theme toggle persisted in `localStorage`
+- **Markdown editor** - `django-markdownx` with live preview; tags via `django-taggit`
 
 ---
 
@@ -116,6 +116,6 @@ DJANGO_SETTINGS_MODULE=devlog.settings.local venv/bin/pytest -v
 | [`docs/01-setup.md`](docs/01-setup.md) | Installation, environment variables, tests, backup, logging |
 | [`docs/02-architecture.md`](docs/02-architecture.md) | Stack, data models, URL namespaces, middleware |
 | [`docs/03-security.md`](docs/03-security.md) | Brute-force protection, rate limiting, 2FA, XSS, CSRF, audit log |
-| [`docs/04-api.md`](docs/04-api.md) | REST API — endpoints, authorization, curl examples |
+| [`docs/04-api.md`](docs/04-api.md) | REST API - endpoints, authorization, curl examples |
 | [`docs/05-frontend.md`](docs/05-frontend.md) | CSS design system, JS, dark/light mode, components |
 | [`docs/06-features.md`](docs/06-features.md) | Comments, 2FA, newsletter, author panel, moderation |

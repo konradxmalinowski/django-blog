@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}{% if is_moderator %}Panel moderatora{% else %}Moje posty{% endif %} — devlog{% endblock %}
+{% block title %}{% if is_moderator %}Panel moderatora{% else %}Moje posty{% endif %} - devlog{% endblock %}
 
 {% block content %}
 <div class="profile-container" style="max-width:1000px;">
   <div class="terminal-box">
     <div class="terminal-box-header">
       {% if is_moderator %}
-        <span style="color:var(--accent-warn);">&#9654;</span> Panel moderatora — wszystkie posty
+        <span style="color:var(--accent-warn);">&#9654;</span> Panel moderatora - wszystkie posty
       {% else %}
         &#9654; Moje posty
       {% endif %}

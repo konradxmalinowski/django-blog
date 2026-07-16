@@ -1,10 +1,10 @@
-# Render Blueprint — deploy devlog with one click.
+# Render Blueprint - deploy devlog with one click.
 # https://render.com/docs/blueprint-spec
 #
 # BEFORE first deploy, add these env vars manually in the Render dashboard
 # (they are NOT here because they contain secrets):
 #   SUPERUSER_USERNAME, SUPERUSER_EMAIL, SUPERUSER_PASSWORD
-#   BREVO_API_KEY         (from brevo.com — free, 300 emails/day, replaces Gmail SMTP)
+#   BREVO_API_KEY         (from brevo.com - free, 300 emails/day, replaces Gmail SMTP)
 #   DEFAULT_FROM_EMAIL    (e.g. "DevLog <your@verified-sender.com>")
 #   SITE_DEFAULT_OG_IMAGE (optional)
 

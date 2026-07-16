@@ -1,4 +1,4 @@
-# Hosting na Render.com — krok po kroku
+# Hosting na Render.com - krok po kroku
 
 Render oferuje darmowy hosting dla aplikacji webowych i baz PostgreSQL.  
 Ograniczenia darmowego planu: serwis usypia po 15 minutach braku ruchu (pierwsze zapytanie po uśpieniu trwa ~30 sekund), PostgreSQL za darmo jest usuwana po 90 dniach nieaktywności.
@@ -13,7 +13,7 @@ Ograniczenia darmowego planu: serwis usypia po 15 minutach braku ruchu (pierwsze
 
 ---
 
-## Krok 1 — Wygeneruj bezpieczny SECRET_KEY
+## Krok 1 - Wygeneruj bezpieczny SECRET_KEY
 
 Na swoim komputerze uruchom:
 
@@ -21,11 +21,11 @@ Na swoim komputerze uruchom:
 python3 -c "import secrets; print(secrets.token_hex(50))"
 ```
 
-Skopiuj wynik — użyjesz go w kroku 4.
+Skopiuj wynik - użyjesz go w kroku 4.
 
 ---
 
-## Krok 2 — Utwórz bazę PostgreSQL na Render
+## Krok 2 - Utwórz bazę PostgreSQL na Render
 
 1. Zaloguj się na [dashboard.render.com](https://dashboard.render.com)
 2. Kliknij **New +** → **PostgreSQL**
@@ -35,33 +35,33 @@ Skopiuj wynik — użyjesz go w kroku 4.
    - **Plan**: `Free`
 4. Kliknij **Create Database**
 5. Poczekaj ~2 minuty aż baza będzie gotowa (`Available`)
-6. Na stronie bazy skopiuj wartość **Internal Database URL** — wygląda tak:
+6. Na stronie bazy skopiuj wartość **Internal Database URL** - wygląda tak:
    ```
    postgresql://devlog_user:haslo@dpg-xxxxx-a/devlog_db
    ```
-   Zachowaj ją — użyjesz jej w kroku 4.
+   Zachowaj ją - użyjesz jej w kroku 4.
 
 ---
 
-## Krok 3 — Utwórz Web Service
+## Krok 3 - Utwórz Web Service
 
 1. Kliknij **New +** → **Web Service**
 2. Wybierz **Build and deploy from a Git repository** → **Next**
 3. Podłącz konto GitHub jeśli to pierwsza usługa, następnie wybierz repozytorium `PPZAW-blog-app`
 4. Kliknij **Connect**
 5. Wypełnij formularz:
-   - **Name**: `devlog` *(lub inna nazwa — ta stanie się Twoim URL: `devlog.onrender.com`)*
+   - **Name**: `devlog` *(lub inna nazwa - ta stanie się Twoim URL: `devlog.onrender.com`)*
    - **Region**: `Frankfurt (EU Central)`
    - **Branch**: `main`
    - **Runtime**: `Python 3`
    - **Build Command**: `./build.sh`
    - **Start Command**: `gunicorn devlog.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120`
    - **Plan**: `Free`
-6. **Nie klikaj jeszcze Deploy** — najpierw dodaj zmienne środowiskowe (Krok 4)
+6. **Nie klikaj jeszcze Deploy** - najpierw dodaj zmienne środowiskowe (Krok 4)
 
 ---
 
-## Krok 4 — Dodaj zmienne środowiskowe
+## Krok 4 - Dodaj zmienne środowiskowe
 
 W sekcji **Environment** formularza Web Service (lub po utworzeniu: Settings → Environment) dodaj wszystkie poniższe zmienne:
 
@@ -84,14 +84,14 @@ W sekcji **Environment** formularza Web Service (lub po utworzeniu: Settings →
 | `EMAIL_HOST_PASSWORD` | Gmail App Password (16 znaków) |
 | `DEFAULT_FROM_EMAIL` | `DevLog <twoj@gmail.com>` |
 
-> **Wskazówka**: jeśli nie chcesz teraz konfigurować emaila, ustaw `EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend` — emaile będą tylko logowane, nie wysyłane.
+> **Wskazówka**: jeśli nie chcesz teraz konfigurować emaila, ustaw `EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend` - emaile będą tylko logowane, nie wysyłane.
 
 ---
 
-## Krok 5 — Deploy
+## Krok 5 - Deploy
 
 1. Kliknij **Create Web Service** (lub **Manual Deploy** jeśli już utworzyłeś)
-2. Render uruchomi `build.sh` — możesz śledzić logi w czasie rzeczywistym w zakładce **Logs**
+2. Render uruchomi `build.sh` - możesz śledzić logi w czasie rzeczywistym w zakładce **Logs**
 3. `build.sh` wykona kolejno:
    - `pip install -r requirements/production.txt`
    - `python manage.py collectstatic --no-input`
@@ -102,26 +102,26 @@ W sekcji **Environment** formularza Web Service (lub po utworzeniu: Settings →
 
 ---
 
-## Krok 6 — Sprawdź działanie
+## Krok 6 - Sprawdź działanie
 
-1. Otwórz `https://twoja-nazwa.onrender.com` — powinna pojawić się strona główna bloga
+1. Otwórz `https://twoja-nazwa.onrender.com` - powinna pojawić się strona główna bloga
 2. Otwórz `https://twoja-nazwa.onrender.com/admin` i zaloguj się danymi z `SUPERUSER_*`
-3. Sprawdź `/api/posts/` — powinny pojawić się posty w formacie JSON
+3. Sprawdź `/api/posts/` - powinny pojawić się posty w formacie JSON
 4. Sprawdź `/sitemap.xml` i `/robots.txt`
 
 ---
 
-## Krok 7 — Zaktualizuj SITE_URL
+## Krok 7 - Zaktualizuj SITE_URL
 
 Po poznaniu dokładnego URL swojego serwisu (np. `devlog-abc123.onrender.com`):
 
 1. W Render dashboard → twój serwis → **Environment**
 2. Zmień `SITE_URL` na `https://devlog-abc123.onrender.com`
-3. Kliknij **Save Changes** — Render automatycznie zrobi redeploy
+3. Kliknij **Save Changes** - Render automatycznie zrobi redeploy
 
 ---
 
-## Alternatywna metoda — Render Blueprint (render.yaml)
+## Alternatywna metoda - Render Blueprint (render.yaml)
 
 Plik `render.yaml` w repozytorium definiuje całą infrastrukturę. Możesz użyć go zamiast kroków 2-3:
 
@@ -131,7 +131,7 @@ Plik `render.yaml` w repozytorium definiuje całą infrastrukturę. Możesz uży
 4. Uzupełnij brakujące zmienne (te oznaczone jako wymagające ręcznego ustawienia)
 5. Kliknij **Apply**
 
-> **Uwaga**: `render.yaml` nie zawiera sekretów (`EMAIL_HOST_PASSWORD`, `SUPERUSER_PASSWORD` itp.) — musisz je dodać ręcznie w dashboardzie.
+> **Uwaga**: `render.yaml` nie zawiera sekretów (`EMAIL_HOST_PASSWORD`, `SUPERUSER_PASSWORD` itp.) - musisz je dodać ręcznie w dashboardzie.
 
 ---
 
@@ -149,10 +149,10 @@ Ręczny deploy: zakładka **Manual Deploy** → **Deploy latest commit**.
 | Kwestia | Opis |
 |---------|------|
 | **Uśpienie serwisu** | Po 15 min bez ruchu serwis usypia; pierwsze żądanie po uśpieniu trwa ~30s |
-| **Media (zdjęcia)** | Render free ma efemeryczny filesystem — uploadowane pliki (cover images, avatary) **NIE są persystowane** po restarcie/deployu. Dla produkcji skonfiguruj Cloudinary lub AWS S3. |
-| **PostgreSQL TTL** | Darmowa baza jest usuwana po **90 dniach** nieaktywności — rób regularne backupy |
-| **RAM** | 512 MB — wystarczy dla małego bloga |
-| **CPU** | Shared — możliwe spowolnienia pod obciążeniem |
+| **Media (zdjęcia)** | Render free ma efemeryczny filesystem - uploadowane pliki (cover images, avatary) **NIE są persystowane** po restarcie/deployu. Dla produkcji skonfiguruj Cloudinary lub AWS S3. |
+| **PostgreSQL TTL** | Darmowa baza jest usuwana po **90 dniach** nieaktywności - rób regularne backupy |
+| **RAM** | 512 MB - wystarczy dla małego bloga |
+| **CPU** | Shared - możliwe spowolnienia pod obciążeniem |
 
 ---
 
@@ -179,7 +179,7 @@ Lub skonfiguruj cron job na swoim komputerze z `pg_dump` + upload do Google Driv
 - Upewnij się że `ALLOWED_HOSTS=.onrender.com` jest ustawione
 
 **Strona zwraca 500:**
-- Sprawdź logi Render — błędy Django są tam widoczne
+- Sprawdź logi Render - błędy Django są tam widoczne
 - Tymczasowo możesz ustawić `DEBUG=True` żeby zobaczyć szczegóły, ale koniecznie przywróć `False`
 
 **Email nie działa:**

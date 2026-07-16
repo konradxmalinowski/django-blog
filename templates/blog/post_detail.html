@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static blog_tags %}
 
-{% block title %}{{ post.title }} — devlog{% endblock %}
+{% block title %}{{ post.title }} - devlog{% endblock %}
 {% block meta_description %}{{ post.get_meta_description }}{% endblock %}
 {% block meta_author %}{{ post.author.get_full_name|default:post.author.username }}{% endblock %}
 {% block canonical_url %}{{ SITE_URL }}{{ post.get_absolute_url }}{% endblock %}

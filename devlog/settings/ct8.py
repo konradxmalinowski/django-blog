@@ -16,7 +16,7 @@ MIDDLEWARE = [
     'apps.accounts.middleware.TwoFactorMiddleware',
 ]
 
-# CT8 ma trwały filesystem, więc zostajemy przy SQLite z base.py —
+# CT8 ma trwały filesystem, więc zostajemy przy SQLite z base.py -
 # bez DATABASE_URL/dj_database_url (to jest Render-owy sposób podpięcia PostgreSQL).
 
 STORAGES = {
@@ -45,7 +45,7 @@ SITE_URL = config('SITE_URL', default='https://twojadomena.ct8.pl')
 DEMO_MODE = True
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
-# Logi do plików — sensowne na CT8 dzięki trwałemu dyskowi
+# Logi do plików - sensowne na CT8 dzięki trwałemu dyskowi
 # (na Render zostaje tylko console, bo tam liczy się stdout).
 LOGGING = {
     'version': 1,

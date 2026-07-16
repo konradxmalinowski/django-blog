@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Kody zapasowe 2FA — devlog{% endblock %}
+{% block title %}Kody zapasowe 2FA - devlog{% endblock %}
 
 {% block content %}
 <div class="profile-container">
   <div class="terminal-box profile-box">
     <div class="terminal-box-header">Kody zapasowe 2FA</div>
     <div class="terminal-box-body">
-      <p class="settings-desc">To jednorazowe kody zapasowe — zapisz je teraz w bezpiecznym miejscu. Nie będą pokazane ponownie.</p>
+      <p class="settings-desc">To jednorazowe kody zapasowe - zapisz je teraz w bezpiecznym miejscu. Nie będą pokazane ponownie.</p>
       <p class="settings-desc">Każdy kod można użyć tylko raz zamiast kodu TOTP, gdy nie masz dostępu do aplikacji uwierzytelniającej.</p>
 
       <pre class="terminal-pre" style="margin:1.5rem 0;">{% for code in codes %}{{ code }}

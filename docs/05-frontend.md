@@ -1,6 +1,6 @@
 # Frontend
 
-## Design system — terminal theme
+## Design system - terminal theme
 
 DevLog używa własnego arkusza CSS (`static/css/terminal.css`) opartego na motywie terminal dark. Cały design system opiera się na zmiennych CSS definiowanych w `:root`.
 
@@ -61,7 +61,7 @@ Font ładowany z Google Fonts (`@import` w `base.html`).
 --sidebar-width:    260px
 ```
 
-Grid: `main-grid` — dwukolumnowy layout (treść + sidebar), przełącza się na jedną kolumnę przy `max-width: 900px`.
+Grid: `main-grid` - dwukolumnowy layout (treść + sidebar), przełącza się na jedną kolumnę przy `max-width: 900px`.
 
 ---
 
@@ -89,7 +89,7 @@ Nawigacja okruszków w stylu terminala:
 
 Klasa: `.breadcrumb-prompt`.
 
-### ASCII progress bar — czas czytania
+### ASCII progress bar - czas czytania
 
 Pasek widoczny na stronie szczegółów posta:
 
@@ -134,11 +134,11 @@ Poziomy pasek na górze viewport podczas scrollowania artykułu:
 
 ### Sidebar newsletter
 
-Widget newslettera z `class="sidebar-newsletter"` — pierwsze miejsce w sidebarze (widoczność bez scrollowania).
+Widget newslettera z `class="sidebar-newsletter"` - pierwsze miejsce w sidebarze (widoczność bez scrollowania).
 
 ### Accessibility
 
-`.sr-only` — klasa dla elementów widocznych tylko dla screen readerów:
+`.sr-only` - klasa dla elementów widocznych tylko dla screen readerów:
 
 ```css
 .sr-only {
@@ -152,7 +152,7 @@ Widget newslettera z `class="sidebar-newsletter"` — pierwsze miejsce w sidebar
 
 ---
 
-## JavaScript — terminal.js
+## JavaScript - terminal.js
 
 Plik `static/js/terminal.js`, ładowany na końcu `<body>`. Cały kod uruchamiany na `DOMContentLoaded`.
 
@@ -171,7 +171,7 @@ Plik `static/js/terminal.js`, ładowany na końcu `<body>`. Cały kod uruchamian
 
 ### Generowanie hasła (inline JS)
 
-W szablonach rejestracji i resetowania hasła — inline `<script>` z:
+W szablonach rejestracji i resetowania hasła - inline `<script>` z:
 
 ```js
 function generatePassword() {
@@ -182,7 +182,7 @@ function generatePassword() {
 }
 ```
 
-Używa `crypto.getRandomValues` (CSPRNG) — nie `Math.random()`.
+Używa `crypto.getRandomValues` (CSPRNG) - nie `Math.random()`.
 
 ---
 

@@ -21,8 +21,8 @@ Elementy strony:
 - Spis treści (automatyczny z nagłówków H2/H3)
 - Pasek postępu czytania (u góry viewport)
 - Szacowany czas czytania (pasek ASCII)
-- Reakcje (lajk) — AJAX, wymaga logowania
-- Zakładka (bookmark) — AJAX, wymaga logowania
+- Reakcje (lajk) - AJAX, wymaga logowania
+- Zakładka (bookmark) - AJAX, wymaga logowania
 - Sekcja komentarzy
 - Formularz komentarza (wszyscy użytkownicy)
 
@@ -33,15 +33,15 @@ Formularz: `name`, `email`, `body`.
 Walidacja:
 - Pola wymagane
 - Treść sanityzowana przez `bleach` (whitelist tagów)
-- Filtr przekleństw (PL+EN) — odrzuca formularz
+- Filtr przekleństw (PL+EN) - odrzuca formularz
 - Rate limit: 5 komentarzy/minutę na IP
 
-Po wysłaniu — PRG redirect (zapobiega duplikatom przy odświeżeniu). Komentarz trafia do moderacji (`active=False`) i pojawia się po zatwierdzeniu przez admina.
+Po wysłaniu - PRG redirect (zapobiega duplikatom przy odświeżeniu). Komentarz trafia do moderacji (`active=False`) i pojawia się po zatwierdzeniu przez admina.
 
 ### Reakcje i zakładki
 
-- **Reakcja** (lajk): przycisk `[♥ N]` — AJAX POST na `/posts/<id>/react/`
-- **Zakładka**: przycisk `[⊙ bookmark]` — AJAX POST na `/posts/<id>/bookmark/`
+- **Reakcja** (lajk): przycisk `[♥ N]` - AJAX POST na `/posts/<id>/react/`
+- **Zakładka**: przycisk `[⊙ bookmark]` - AJAX POST na `/posts/<id>/bookmark/`
 - Lista zakładek: `/bookmarks/` (wymaga logowania)
 
 ---
@@ -54,7 +54,7 @@ URL: `/accounts/register/`
 
 1. Wypełnij formularz (username, email, hasło)
 2. Kliknij "Generuj hasło" dla losowego bezpiecznego hasła (CSPRNG)
-3. Po rejestracji — email z linkiem weryfikacyjnym (ważny 24h)
+3. Po rejestracji - email z linkiem weryfikacyjnym (ważny 24h)
 4. Kliknij link → konto aktywowane, automatyczne zalogowanie
 
 ### Logowanie
@@ -89,7 +89,7 @@ Zakładki:
 1. Przejdź do `/accounts/settings/2fa/`
 2. Zeskanuj QR code w aplikacji (Google Authenticator, Authy, Bitwarden, 1Password)
 3. Wpisz 6-cyfrowy kod z aplikacji
-4. 2FA włączone — jednorazowo wyświetlane 8 kodów zapasowych
+4. 2FA włączone - jednorazowo wyświetlane 8 kodów zapasowych
 
 ### Logowanie z 2FA
 
@@ -108,7 +108,7 @@ Rate limit: 5 prób/minutę.
 Generowanie/podgląd: `/accounts/settings/2fa/backup-codes/`
 Regeneracja (wymaga aktualnego kodu TOTP): `/accounts/settings/2fa/backup-codes/regenerate/`
 
-Po użyciu kodu zapasowego — oznaczany jako zużyty, nie może być użyty ponownie.
+Po użyciu kodu zapasowego - oznaczany jako zużyty, nie może być użyty ponownie.
 
 ### Wyłączanie 2FA
 
@@ -156,7 +156,7 @@ URL: `/author/posts/<slug>/edit/`
 
 ### Usunięcie posta
 
-URL: `/author/posts/<slug>/delete/` — strona potwierdzenia.
+URL: `/author/posts/<slug>/delete/` - strona potwierdzenia.
 
 ---
 
@@ -173,8 +173,8 @@ Moderator w panelu `/author/posts/`:
 
 ## RSS
 
-- `/feed/` — wszystkie opublikowane posty
-- `/feed/category/<slug>/` — posty z konkretnej kategorii
+- `/feed/` - wszystkie opublikowane posty
+- `/feed/category/<slug>/` - posty z konkretnej kategorii
 
 Obsługiwane przez wszystkie czytniki RSS (Atom 1.0).
 

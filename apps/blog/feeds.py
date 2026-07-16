@@ -5,7 +5,7 @@ from apps.blog.models import Category, Post
 
 
 class LatestPostsFeed(Feed):
-    title = "DevLog — Cykl tworzenia aplikacji webowej"
+    title = "DevLog - Cykl tworzenia aplikacji webowej"
     link = "/"
     description = "Najnowsze wpisy o tworzeniu aplikacji webowych"
 
@@ -30,7 +30,7 @@ class CategoryFeed(Feed):
         return get_object_or_404(Category, slug=cat_slug)
 
     def title(self, obj):
-        return f"DevLog — kategoria: {obj.name}"
+        return f"DevLog - kategoria: {obj.name}"
 
     def link(self, obj):
         return obj.get_absolute_url()

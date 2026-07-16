@@ -15,17 +15,17 @@
 | Clickjacking | X-Frame-Options: DENY |
 | MIME sniffing | X-Content-Type-Options: nosniff |
 | Referrer | Referrer-Policy: strict-origin-when-cross-origin |
-| CSP | własny middleware — script-src 'self' 'unsafe-inline' |
+| CSP | własny middleware - script-src 'self' 'unsafe-inline' |
 | Hasła | Django PBKDF2 (domyślny hasher) |
 | Backup codes | PBKDF2 (make_password/check_password) |
 | Session | HTTPONLY, SAMESITE=Lax, 14-dniowy TTL |
 | HTTPS (prod) | SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, HSTS 1y |
-| Audit log | AuditLog model — wszystkie zdarzenia security |
+| Audit log | AuditLog model - wszystkie zdarzenia security |
 | Profanity | Filtr przekleństw (PL+EN) w CommentForm |
 
 ---
 
-## django-axes — brute-force
+## django-axes - brute-force
 
 Konfiguracja w `settings/base.py`:
 
@@ -73,7 +73,7 @@ Przekroczenie limitu → HTTP 429 (obsługiwany przez `handler429`).
 
 - 8 jednorazowych kodów (10-znakowe hex uppercase)
 - Hashowane PBKDF2 przez `django.contrib.auth.hashers.make_password`
-- Weryfikacja iteracyjna (O(8)) — `check_password` per rekord
+- Weryfikacja iteracyjna (O(8)) - `check_password` per rekord
 - Zużyty kod oznaczany `used=True`, nie może być użyty ponownie
 - Regeneracja wymaga aktualnego kodu TOTP
 
@@ -90,8 +90,8 @@ ALLOWED_COMMENT_ATTRS = {'a': ['href', 'title']}
 ```
 
 Walidacja:
-1. `bleach.clean()` — usuwa niedozwolone tagi
-2. `contains_profanity()` — odrzuca formularz jeśli wykryte przekleństwa
+1. `bleach.clean()` - usuwa niedozwolone tagi
+2. `contains_profanity()` - odrzuca formularz jeśli wykryte przekleństwa
 
 ### Markdown (blog_tags.py / markdownify)
 
@@ -145,20 +145,20 @@ Użycie: `DJANGO_SETTINGS_MODULE=devlog.settings.production`
 
 Plik `apps/blog/profanity.py`.  
 Lista obejmuje popularne polskie i angielskie przekleństwa.  
-Walidacja w `CommentForm` — pola `name` i `body`.  
+Walidacja w `CommentForm` - pola `name` i `body`.  
 Odrzucenie formularza z komunikatem: *"Komentarz zawiera niedozwolone słowa."*
 
 Funkcje pomocnicze:
 - `contains_profanity(text: str) -> bool`
-- `censor(text: str, char='*') -> str` — do użycia w admin/moderation
+- `censor(text: str, char='*') -> str` - do użycia w admin/moderation
 
 ---
 
 ## Logi bezpieczeństwa
 
-`logs/security.log` — wszystkie zdarzenia `django.security` (INFO+):
+`logs/security.log` - wszystkie zdarzenia `django.security` (INFO+):
 - nieudane logowania (axes)
 - CSRF failures
 - błędy SSL/TLS
 
-`logs/django.log` — błędy aplikacji (WARNING+).
+`logs/django.log` - błędy aplikacji (WARNING+).

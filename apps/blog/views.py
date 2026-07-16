@@ -134,7 +134,7 @@ def post_detail(request, year, month, day, post):
                 new_comment.email = request.user.email
             new_comment.save()
             _notify_author_new_comment(post_obj, new_comment)
-            messages.success(request, 'Komentarz dodany — czeka na moderację.')
+            messages.success(request, 'Komentarz dodany - czeka na moderację.')
             return redirect(post_obj.get_absolute_url())
     else:
         comment_form = CommentForm()
@@ -199,7 +199,7 @@ def post_share(request, post_id):
         form = EmailPostForm(request.POST)
         if form.is_valid():
             if getattr(django_settings, 'DEMO_MODE', False):
-                messages.info(request, 'Tryb demo — wysyłanie emaili jest wyłączone.')
+                messages.info(request, 'Tryb demo - wysyłanie emaili jest wyłączone.')
                 return render(request, 'blog/post_share.html', {
                     'post': post, 'form': form, 'sent': False, 'section': 'blog',
                 })
@@ -286,7 +286,7 @@ def bookmark_list(request):
 def newsletter_subscribe(request):
     if request.method == 'POST':
         if getattr(django_settings, 'DEMO_MODE', False):
-            messages.info(request, 'Tryb demo — wysyłanie emaili jest wyłączone.')
+            messages.info(request, 'Tryb demo - wysyłanie emaili jest wyłączone.')
             return redirect(request.META.get('HTTP_REFERER', '/'))
         email = request.POST.get('email', '').strip()
         try:
